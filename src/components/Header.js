@@ -1,7 +1,9 @@
+import { NETFLIX_LOGO } from "../utils/constants";
+
 const Header = () => {
   return (
     <header>
-      <h1 className="pl-12 pt-4 text-5xl font-bold text-[#e50914]">Netflix</h1>
+      <img className="h-20 w-48" src={NETFLIX_LOGO} alt="Netflix logo" />
     </header>
   );
 };
