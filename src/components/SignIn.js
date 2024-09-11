@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SignIn = () => {
   return (
     <main className="flex h-screen items-center justify-center">
-      <section className="mb-12 flex h-[36rem] flex-col justify-between bg-[rgb(0,0,0,0.75)] p-24">
+      <section className="mb-12 flex h-[36rem] flex-col justify-between bg-[rgb(0,0,0,0.80)] p-24">
         <h1 className="text-4xl font-bold text-white">Sign In</h1>
         <form className="mb-8 flex flex-col items-center">
           <label className="text-white" htmlFor="email">

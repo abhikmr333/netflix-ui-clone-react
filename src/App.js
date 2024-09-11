@@ -4,11 +4,12 @@ import SignIn from "./components/SignIn.js";
 import SignUp from "./components/SignUp.js";
 
 const App = () => {
-  //applying bg image using conditional styling if we are on path / or signin
-  const isSignInRoute = useLocation().pathname === "/";
+  //applying bg image using conditional styling if we are on path / or signup
+  const path = useLocation().pathname;
+  const isAuthRoute = path === "/" || path === "/signup";
 
   return (
-    <div className={isSignInRoute ? "bg-loginPage" : ""}>
+    <div className={isAuthRoute ? "bg-loginPage" : ""}>
       <Header />
       <Outlet />
     </div>
