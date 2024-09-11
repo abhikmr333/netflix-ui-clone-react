@@ -7,7 +7,7 @@ const SignIn = () => {
         <h1 className="text-4xl font-bold text-white">Sign In</h1>
         <form className="mb-8 flex flex-col items-center">
           <label className="text-white" htmlFor="email">
-            Email or mobile number
+            Email
           </label>
           <input
             className="h-14 w-72 rounded-md border-[3px] border-slate-800 bg-[#141210] text-white"
