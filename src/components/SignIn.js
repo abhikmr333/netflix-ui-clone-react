@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
+import { validateSignInForm } from "../utils/validate";
+import { useRef, useState } from "react";
 
 const SignIn = () => {
+  const [validationMessage, setValidationMessage] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleValidation = () => {
+    //current.value will have the value of that field
+    const { value: emailValue } = email.current;
+    const { value: passwordValue } = password.current;
+    //validating
+    const result = validateSignInForm(emailValue, passwordValue);
+    //if result is not null
+    setValidationMessage(result);
+    //else -> authenticate the user
+  };
+
   return (
     <main className="flex h-screen items-center justify-center">
       <section className="mb-12 flex h-[36rem] flex-col justify-between bg-[rgb(0,0,0,0.80)] p-24">
         <h1 className="text-4xl font-bold text-white">Sign In</h1>
-        <form className="mb-8 flex flex-col items-center">
+        {/* when you submit the form onSubmit gets triggered so form submission can be stopped this way as well */}
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="mb-8 flex flex-col items-center"
+        >
           <label className="text-white" htmlFor="email">
             Email
           </label>
@@ -13,6 +34,7 @@ const SignIn = () => {
             className="h-14 w-72 rounded-md border-[3px] border-slate-800 bg-[#141210] text-white"
             id="email"
             type="text"
+            ref={email}
           />
           <label className="text-white" htmlFor="password">
             Password
@@ -21,8 +43,15 @@ const SignIn = () => {
             className="h-14 w-72 rounded-md border-[3px] border-slate-800 bg-[#141210] text-white"
             id="password"
             type="password"
+            ref={password}
           />
-          <button className="mt-3 h-10 w-72 rounded-md bg-[#e50914] text-white hover:bg-[#c11119]">
+          {validationMessage && (
+            <p className="text-red-500">{validationMessage}</p>
+          )}
+          <button
+            onClick={handleValidation}
+            className="mt-3 h-10 w-72 rounded-md bg-[#e50914] text-white hover:bg-[#c11119]"
+          >
             Sign In
           </button>
         </form>
