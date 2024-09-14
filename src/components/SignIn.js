@@ -46,7 +46,7 @@ const SignIn = () => {
             ref={password}
           />
           {validationMessage && (
-            <p className="text-red-500">{validationMessage}</p>
+            <p className="font-semibold text-red-500">{validationMessage}</p>
           )}
           <button
             onClick={handleValidation}
