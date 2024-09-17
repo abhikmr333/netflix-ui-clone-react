@@ -57,7 +57,7 @@ const SignIn = () => {
         </form>
         <section className="">
           <p className="text-center text-white">
-            New to Netflix?
+            New to ABCDFLIX?
             <Link className="hover:font-bold" to="/signup">
               {" "}
               Sign up now
