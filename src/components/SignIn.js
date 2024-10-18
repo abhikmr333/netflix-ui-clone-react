@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { validateSignInForm } from "../utils/validate";
 import { useRef, useState } from "react";
+import { auth } from "../utils/firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
   const [validationMessage, setValidationMessage] = useState(null);
@@ -8,14 +10,27 @@ const SignIn = () => {
   const password = useRef(null);
 
   const handleValidation = () => {
+    if (validationMessage) setValidationMessage(null);
     //current.value will have the value of that field
     const { value: emailValue } = email.current;
     const { value: passwordValue } = password.current;
     //validating
     const result = validateSignInForm(emailValue, passwordValue);
-    //if result is not null
-    setValidationMessage(result);
-    //else -> authenticate the user
+
+    if (result) setValidationMessage(result);
+    else {
+      signInWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setValidationMessage(errorCode + errorMessage);
+        });
+    }
   };
 
   return (
