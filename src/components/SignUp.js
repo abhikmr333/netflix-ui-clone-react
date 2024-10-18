@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { validateSignUpForm } from "../utils/validate";
 import { useRef, useState } from "react";
+import { auth } from "../utils/firebase.config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
   const [validationMessage, setValidationMessage] = useState(null);
@@ -12,7 +14,21 @@ const SignUp = () => {
     const { value: passwordValue } = password.current;
 
     const result = validateSignUpForm(emailValue, passwordValue);
-    setValidationMessage(result);
+
+    if (result) setValidationMessage(result);
+    else {
+      createUserWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
   };
 
   return (
