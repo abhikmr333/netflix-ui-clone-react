@@ -3,15 +3,18 @@ import { validateSignUpForm } from "../utils/validate";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const [validationMessage, setValidationMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const handleValidation = () => {
     const { value: emailValue } = email.current;
     const { value: passwordValue } = password.current;
+    const { value: nameValue } = name.current;
 
     const result = validateSignUpForm(emailValue, passwordValue);
 
@@ -21,7 +24,11 @@ const SignUp = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
+          updateProfile(auth.currentUser, {
+            displayName: nameValue,
+            photoURL:
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Balaeniceps_rex.jpg/330px-Balaeniceps_rex.jpg",
+          });
           // ...
         })
         .catch((error) => {
@@ -46,6 +53,7 @@ const SignUp = () => {
             className="h-14 w-72 rounded-md border-[3px] border-slate-800 bg-[#141210] text-white"
             id="username"
             type="text"
+            ref={name}
           />
           <label className="text-white" htmlFor="email">
             Email
