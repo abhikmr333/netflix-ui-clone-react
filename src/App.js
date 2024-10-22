@@ -18,7 +18,8 @@ const App = () => {
   const navigate = useNavigate();
   //adding an observer once -> onAuthStateChanged -> detects signup/signin and signout so certain actions can be performed
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    //onAuthStateChanged returns a unsubscribe function
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         dispatch(
@@ -36,6 +37,9 @@ const App = () => {
         navigate("/");
       }
     });
+
+    //clean-up function - unsubscribing onAuthStateChanged
+    return () => unsubscribe();
   }, []);
 
   return (
