@@ -1,12 +1,8 @@
-import {
-  AbortedDeferredError,
-  createBrowserRouter,
-  Outlet,
-  useLocation,
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
 import Header from "./components/Header.js";
 import SignIn from "./components/SignIn.js";
 import SignUp from "./components/SignUp.js";
+import Browse from "./components/Browse.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./utils/firebase.config.js";
 import { useEffect } from "react";
@@ -33,9 +29,11 @@ const App = () => {
             photoURL: user.photoURL,
           }),
         );
+        navigate("/browse");
       } else {
         // User is signed out
         dispatch(removeUser());
+        navigate("/");
       }
     });
   }, []);
@@ -58,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/browse",
+        element: <Browse />,
       },
     ],
   },
