@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 const Browse = () => {
-  const userName = useSelector((store) => store.userReducer?.displayName);
+  const userName = useSelector((store) => store.user?.displayName);
   return <h1>{userName}</h1>;
 };
 

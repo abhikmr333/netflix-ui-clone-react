@@ -32,12 +32,11 @@ const App = () => {
         );
         navigate("/browse");
       } else {
-        // User is signed out
+        // User is signed   out
         dispatch(removeUser());
         navigate("/");
       }
     });
-
     //clean-up function - unsubscribing onAuthStateChanged
     return () => unsubscribe();
   }, []);

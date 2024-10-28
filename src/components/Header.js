@@ -3,7 +3,7 @@ import { auth } from "../utils/firebase.config";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
-  const user = useSelector((store) => store.userReducer);
+  const user = useSelector((store) => store.user);
 
   const logout = () => {
     signOut(auth)
