@@ -16,10 +16,10 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between bg-gradient-to-b from-black">
+    <header className="absolute flex w-screen justify-between bg-gradient-to-b from-black">
       <p className="ml-8 p-4 text-4xl text-red-500">ABCDFLIX</p>
       {user && (
-        <div>
+        <div className="">
           <img
             className="h-10 w-10 rounded"
             src={user.photoURL}

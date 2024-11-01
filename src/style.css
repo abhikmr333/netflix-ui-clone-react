@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-  color: green;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
 }
