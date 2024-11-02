@@ -16,7 +16,6 @@ const useNowPlayingMovies = () => {
       const response = await fetch(MOVIES_URL, API_OPTIONS);
       if (!response.ok) throw new Error("Error in fetching");
       const result = await response.json();
-      console.log(result);
       dispatch(addMovies(result.results));
     } catch (err) {
       console.log(err.message);
