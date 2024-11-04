@@ -13,10 +13,10 @@ const MainSection = () => {
   return (
     <div className="">
       <MovieDetail
-        originalTitle={movies?.[0]?.original_title}
-        overview={movies?.[0]?.overview}
+        originalTitle={movies?.[4]?.original_title}
+        overview={movies?.[4]?.overview}
       />
-      <MovieVideo movieId={movies?.[0]?.id} />
+      <MovieVideo movieId={movies?.[4]?.id} />
     </div>
   );
 };

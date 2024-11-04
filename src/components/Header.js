@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="absolute flex w-screen justify-between bg-gradient-to-b from-black">
-      <p className="ml-8 p-4 text-4xl text-red-500">ABCDFLIX</p>
+      <p className="relative z-10 ml-8 p-4 text-4xl text-red-500">ABCDFLIX</p>
       {user && (
         <div className="">
           <img
