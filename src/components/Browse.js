@@ -1,11 +1,13 @@
 import useNowPlayingMovies from "../utils/hooks/useNowPlayingMovies";
 import MainSection from "./MainSection";
 import SecondarySection from "./SecondarySection";
+import usePopularMovies from "../utils/hooks/usePopularMovies";
 
 const Browse = () => {
   useNowPlayingMovies();
-  //Main section and Secondary section
+  usePopularMovies();
 
+  //Main section and Secondary section
   return (
     <>
       <MainSection />
