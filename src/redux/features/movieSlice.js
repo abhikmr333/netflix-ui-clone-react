@@ -21,4 +21,5 @@ const moviesSlice = createSlice({
 });
 
 export const movieReducer = moviesSlice.reducer;
-export const { addMovies, addTrailerKey, popularMovies } = moviesSlice.actions;
+export const { addMovies, addTrailerKey, addPopularMovies } =
+  moviesSlice.actions;
