@@ -10,3 +10,6 @@ export const POPULAR_MOVIES =
 
 export const TOP_RATED_MOVIES =
   "https://api.themoviedb.org/3/movie/top_rated?page=1";
+
+export const UPCOMING_MOVIES =
+  "https://api.themoviedb.org/3/movie/upcoming?page=1";
