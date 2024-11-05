@@ -11,12 +11,12 @@ const MainSection = () => {
   if (!movies) return;
 
   return (
-    <div className="">
+    <div>
       <MovieDetail
-        originalTitle={movies?.[4]?.original_title}
-        overview={movies?.[4]?.overview}
+        originalTitle={movies?.[1]?.original_title}
+        overview={movies?.[1]?.overview}
       />
-      <MovieVideo movieId={movies?.[4]?.id} />
+      <MovieVideo movieId={movies?.[1]?.id} />
     </div>
   );
 };

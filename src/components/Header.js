@@ -19,7 +19,7 @@ const Header = () => {
     <header className="absolute flex w-screen justify-between bg-gradient-to-b from-black">
       <p className="relative z-10 ml-8 p-4 text-4xl text-red-500">ABCDFLIX</p>
       {user && (
-        <div className="">
+        <div className="mr-6">
           <img
             className="h-10 w-10 rounded"
             src={user.photoURL}
@@ -27,7 +27,7 @@ const Header = () => {
           />
           <button
             onClick={logout}
-            className="h-6 rounded bg-transparent font-semibold text-red-600"
+            className="relative z-10 h-6 rounded bg-transparent font-semibold text-red-600"
           >
             Sign out
           </button>
