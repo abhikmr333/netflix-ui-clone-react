@@ -7,3 +7,6 @@ export const MOVIE_POSTERS = "https://image.tmdb.org/t/p/w500/";
 
 export const POPULAR_MOVIES =
   "https://api.themoviedb.org/3/movie/popular?page=1";
+
+export const TOP_RATED_MOVIES =
+  "https://api.themoviedb.org/3/movie/top_rated?page=1";
