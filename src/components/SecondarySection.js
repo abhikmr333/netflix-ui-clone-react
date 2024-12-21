@@ -50,7 +50,7 @@ const SecondarySection = () => {
     ));
 
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex bg-black">
       <div className="relative z-20 -mt-80 px-12">
         <h2 className="mt-4 pl-2 text-3xl text-white">Now Playing</h2>
         <section className="scrollbar-hidden flex overflow-auto">
