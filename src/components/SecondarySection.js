@@ -1,77 +1,48 @@
 import { useSelector } from "react-redux";
-import MovieCard from "./MovieCard";
+import MovieList from "./MovieList";
 
 const SecondarySection = () => {
-  //movielist1
-  //moviecards
-  //......
   const movies = useSelector((store) => store.movies);
   const { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } =
     movies;
 
-  const nowPlayingMoviesList =
-    nowPlayingMovies &&
-    nowPlayingMovies.map((movie) => (
-      <MovieCard
-        title={movie?.original_title}
-        key={movie?.id}
-        posterPath={movie?.poster_path}
-      />
-    ));
+  const moviesList = [];
 
-  const popularMoviesList =
-    popularMovies &&
-    popularMovies.map((movie) => (
-      <MovieCard
-        title={movie?.original_title}
-        key={movie?.id}
-        posterPath={movie.poster_path}
-      />
-    ));
+  nowPlayingMovies &&
+    moviesList.push(
+      <MovieList
+        key={"Now Playing"}
+        title={"Now Playing"}
+        movies={nowPlayingMovies}
+      />,
+    );
 
-  const topRatedMoviesList =
-    topRatedMovies &&
-    topRatedMovies.map((movie) => (
-      <MovieCard
-        title={movie?.original_title}
-        key={movie?.id}
-        posterPath={movie?.poster_path}
-      />
-    ));
+  popularMovies &&
+    moviesList.push(
+      <MovieList key={"Popular"} title={"Popular"} movies={popularMovies} />,
+    );
 
-  const upcomingMoviesList =
-    upcomingMovies &&
-    upcomingMovies.map((movie) => (
-      <MovieCard
-        title={movie?.original_title}
-        key={movie?.id}
-        posterPath={movie?.poster_path}
-      />
-    ));
+  topRatedMovies &&
+    moviesList.push(
+      <MovieList
+        key={"Top Rated"}
+        title={"Top Rated"}
+        movies={topRatedMovies}
+      />,
+    );
+
+  upcomingMovies &&
+    moviesList.push(
+      <MovieList
+        key={"Upcoming Movies"}
+        title={"Upcoming Movies"}
+        movies={upcomingMovies}
+      />,
+    );
 
   return (
     <div className="flex bg-black">
-      <div className="relative z-20 -mt-80 px-12">
-        <h2 className="mt-4 pl-2 text-3xl text-white">Now Playing</h2>
-        <section className="scrollbar-hidden flex overflow-auto">
-          {nowPlayingMoviesList}
-        </section>
-
-        <h2 className="mt-4 pl-2 text-3xl text-white">Popular Movies</h2>
-        <section className="scrollbar-hidden flex overflow-auto">
-          {popularMoviesList}
-        </section>
-
-        <h2 className="mt-4 pl-2 text-3xl text-white">Top Rated Movies</h2>
-        <section className="scrollbar-hidden flex overflow-auto">
-          {topRatedMoviesList}
-        </section>
-
-        <h2 className="mt-4 pl-2 text-3xl text-white">Upcoming Movies</h2>
-        <section className="scrollbar-hidden flex overflow-auto">
-          {upcomingMoviesList}
-        </section>
-      </div>
+      <div className="relative z-20 -mt-80 px-12">{moviesList}</div>
     </div>
   );
 };
