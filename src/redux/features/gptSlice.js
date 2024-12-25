@@ -3,11 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const gptSlice = createSlice({
   name: "gpt",
   initialState: {
-    view: null,
+    view: false,
   },
   reducers: {
     switchPage: (state) => {
-      return !state.view;
+      state.view = !state.view;
     },
   },
 });
+
+export const { switchPage } = gptSlice.actions;
+export const gptReducer = gptSlice.reducer;
