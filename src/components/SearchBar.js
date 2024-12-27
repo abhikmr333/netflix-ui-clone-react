@@ -1,9 +1,12 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { geminiApiKey } from "../utils/geminiApiKey";
 import { useRef } from "react";
+import { addSuggestedMovies } from "../redux/features/gptSlice";
+import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
   const searchQuery = useRef(null);
+  const dispatch = useDispatch();
 
   const searchPrompt = () => {
     const { value } = searchQuery.current;
@@ -14,9 +17,12 @@ const SearchBar = () => {
       const genAI = new GoogleGenerativeAI(geminiApiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      const prompt = `Recommend me 5 ${query} movies only names separated by commas(act as a movie recommendation system)`;
+      const prompt = `Recommend me 5 ${query} movies only names separated by commas and no whitespace before or after comma(act as a movie recommendation system)`;
       const result = await model.generateContent(prompt);
-      console.log(result.response.text());
+      const gptResult = result.response.text();
+      console.log(gptResult);
+
+      dispatch(addSuggestedMovies(gptResult));
     } catch (err) {
       console.log(err.message);
     }
