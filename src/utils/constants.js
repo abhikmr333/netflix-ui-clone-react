@@ -13,3 +13,5 @@ export const TOP_RATED_MOVIES =
 
 export const UPCOMING_MOVIES =
   "https://api.themoviedb.org/3/movie/upcoming?page=1";
+
+export const SEARCH_MOVIE = "https://api.themoviedb.org/3/search/movie?query=";

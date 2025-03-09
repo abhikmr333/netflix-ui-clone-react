@@ -20,7 +20,6 @@ const SearchBar = () => {
       const prompt = `Recommend me 5 ${query} movies only names separated by commas and no whitespace before or after comma(act as a movie recommendation system)`;
       const result = await model.generateContent(prompt);
       const gptResult = result.response.text();
-      console.log(gptResult);
 
       dispatch(addSuggestedMovies(gptResult));
     } catch (err) {

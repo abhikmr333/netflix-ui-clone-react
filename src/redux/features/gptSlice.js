@@ -5,6 +5,7 @@ const gptSlice = createSlice({
   initialState: {
     view: false,
     suggestedMovies: null,
+    suggestedMoviesResult: null,
   },
   reducers: {
     switchPage: (state) => {
